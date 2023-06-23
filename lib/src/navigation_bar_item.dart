@@ -1,6 +1,6 @@
+import 'package:custom_animated_bottom_navigation_bar/src/bubble_selection_painter.dart';
+import 'package:custom_animated_bottom_navigation_bar/src/tab_item.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_bottom_navigation_bar/src/bubble_selection_painter.dart';
-import 'package:animated_bottom_navigation_bar/src/tab_item.dart';
 
 class NavigationBarItem extends StatelessWidget {
   final bool isActive;
@@ -27,6 +27,8 @@ class NavigationBarItem extends StatelessWidget {
     required this.iconSize,
     required this.onTap,
     this.child,
+    required GlobalKey<State<StatefulWidget>> showcaseKey,
+    required String description,
   });
 
   @override

@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:custom_animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/painting.dart';
 
