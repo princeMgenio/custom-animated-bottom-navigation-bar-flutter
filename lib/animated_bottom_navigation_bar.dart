@@ -29,6 +29,12 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   /// Icon data to render in the tab bar.
   final List<IconData>? icons;
 
+  // Used for Showcasing icons
+  final List<GlobalKey> keys;
+
+  // Used for Showcasing icons
+  final List<String> showcaseDescriptions;
+
   /// Handler which is passed every updated active index.
   final Function(int) onTap;
 
@@ -121,6 +127,8 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     Key? key,
     required this.activeIndex,
     required this.onTap,
+    required this.keys,
+    required this.showcaseDescriptions,
     this.tabBuilder,
     this.itemCount,
     this.icons,
@@ -174,6 +182,8 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required List<IconData> icons,
     required int activeIndex,
     required Function(int) onTap,
+    required List<GlobalKey> keys,
+    required List<String> showcaseDescriptions,
     double? height,
     double? splashRadius,
     int? splashSpeedInMilliseconds,
@@ -201,6 +211,8 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
   }) : this._internal(
           key: key,
           icons: icons,
+          keys: keys,
+          showcaseDescriptions: showcaseDescriptions,
           activeIndex: activeIndex,
           onTap: onTap,
           height: height,
@@ -235,6 +247,8 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required IndexedWidgetBuilder tabBuilder,
     required int activeIndex,
     required Function(int) onTap,
+    required List<GlobalKey> keys,
+    required List<String> showcaseDescriptions,
     double? height,
     double? splashRadius,
     int? splashSpeedInMilliseconds,
@@ -258,6 +272,8 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     bool blurEffect = false,
   }) : this._internal(
           key: key,
+          showcaseDescriptions: showcaseDescriptions,
+          keys: keys,
           tabBuilder: tabBuilder,
           itemCount: itemCount,
           activeIndex: activeIndex,
@@ -442,6 +458,8 @@ class _AnimatedBottomNavigationBarState
           activeColor: widget.activeColor,
           inactiveColor: widget.inactiveColor,
           child: widget.tabBuilder?.call(i, isActive),
+          showcaseKey: widget.keys.elementAt(i),
+          description: widget.showcaseDescriptions.elementAt(i),
           iconData: widget.icons?.elementAt(i),
           iconScale: _iconScale,
           iconSize: widget.iconSize,
