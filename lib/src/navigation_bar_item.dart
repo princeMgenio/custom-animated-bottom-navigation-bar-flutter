@@ -1,6 +1,7 @@
 import 'package:custom_animated_bottom_navigation_bar/src/bubble_selection_painter.dart';
 import 'package:custom_animated_bottom_navigation_bar/src/tab_item.dart';
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class NavigationBarItem extends StatelessWidget {
   final bool isActive;
@@ -14,6 +15,8 @@ class NavigationBarItem extends StatelessWidget {
   final double? iconSize;
   final VoidCallback onTap;
   final Widget? child;
+  final GlobalKey<State<StatefulWidget>> showcaseKey;
+  final String description;
 
   NavigationBarItem({
     required this.isActive,
@@ -27,8 +30,8 @@ class NavigationBarItem extends StatelessWidget {
     required this.iconSize,
     required this.onTap,
     this.child,
-    required GlobalKey<State<StatefulWidget>> showcaseKey,
-    required String description,
+    required this.showcaseKey,
+    required this.description,
   });
 
   @override
@@ -44,13 +47,23 @@ class NavigationBarItem extends StatelessWidget {
           child: InkWell(
             child: Transform.scale(
               scale: isActive ? iconScale : 1,
-              child: TabItem(
-                isActive: isActive,
-                iconData: iconData,
-                iconSize: iconSize,
-                activeColor: activeColor,
-                inactiveColor: inactiveColor,
-                child: child,
+              child: Showcase(
+                tooltipBackgroundColor: Color(0xFF7d73c3),
+                descTextStyle: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                key: showcaseKey,
+                description: description,
+                child: TabItem(
+                  isActive: isActive,
+                  iconData: iconData,
+                  iconSize: iconSize,
+                  activeColor: activeColor,
+                  inactiveColor: inactiveColor,
+                  child: child,
+                ),
               ),
             ),
             splashColor: Colors.transparent,
