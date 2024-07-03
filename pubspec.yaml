@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #changed the package version
   showcaseview: ^3.0.0
 
 dev_dependencies:
